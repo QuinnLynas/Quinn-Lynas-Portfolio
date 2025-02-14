@@ -6,16 +6,24 @@ about:
   links: 
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: www.linkedin.com/in/quinn-lynas-8ba15b254
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/QuinnLynas
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
-```{r}
-1 + 1
-```
+Quinn Lynas
+
+## Education
+
+California State University at Monterey Bay
+B.S. in Statistics | 2021 - 2025
+
+## Experience
+
+None
+
+
+

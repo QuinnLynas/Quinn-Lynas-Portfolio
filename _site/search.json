@@ -4,13 +4,27 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\nMy name is Quinn Lynas and I am a statistics major."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Quinn-Lynas-Portfolio",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Quinn Lynas"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Quinn-Lynas-Portfolio",
+    "section": "Education",
+    "text": "Education\nCalifornia State University at Monterey Bay B.S. in Statistics | 2021 - 2025"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Quinn-Lynas-Portfolio",
+    "section": "Experience",
+    "text": "Experience\nNone"
   }
 ]
