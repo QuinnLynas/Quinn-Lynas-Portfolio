@@ -2,7 +2,7 @@
 title: "Quinn-Lynas-Portfolio"
 about: 
   template: jolla
-  image: profile.jpg
+  image: plot2-1.png
   links: 
     - icon: linkedin
       text: LinkedIn
