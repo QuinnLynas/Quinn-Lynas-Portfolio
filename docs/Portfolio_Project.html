@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quinn-Lynas-Portfolio – Quinn-Lynas’s-Portfolio</title>
+<title>Portfolio Project – Quinn-Lynas’s-Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -88,16 +89,12 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About Me</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Portfolio_Project.html"> 
-<span class="menu-text">Portfolio Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -110,52 +107,38 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#education" id="toc-education" class="nav-link active" data-scroll-target="#education">Education</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience">Experience</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="plot2-1.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quinn-Lynas-Portfolio</h1>
+<h1 class="title">Portfolio Project</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
-
-<p>Quinn Lynas</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>California State University at Monterey Bay B.S. in Statistics | 2021 - 2025</p>
-</section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
-<p>None</p>
+  
 
 
-</section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="/www.linkedin.com/in/quinn-lynas-8ba15b254" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/QuinnLynas" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+</header>
+
+
+<p><strong>Data Description:</strong> I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/iveeaten3223times/massive-yahoo-finance-dataset. My data has information on stock prices from November 29th, 2018, to November 29th, 2023. This includes opening and closing prices, as well as highs and lows for the day. Additionally, there is information on volume, dividends, and splits. I want answer the question: Can we predict a company’s stock price 30 days into the future using historical data? If this is unreasonable, I would like to explore how different business categories (tech, finance, medicine, etc.) were affected by COVID-19.</p>
+<p><strong>Data Visualization:</strong> I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my final visualization, I would like to show the trajectory of my prediction, as well as the real world outcome. The data is from 2 years ago, so I can see how well the model works. As far as missing information, this data does not include any information on real world events. For example, I won’t have any idea if X company decides to unveal a product or announces a breakthrough in research, I will have to find that out from an outside source.</p>
+<p><strong>Data Cleaning:</strong> The data set I am looking at has 602000 rows of data. I am not interested in every single stock, so I will be filtering out some companies. I am going to add a new variable for business category and maybe a volatility variable as well. I will need to create a new variable that calculates daily change in order to calculate volatility. If I find a data set that works, I would like to add new data that fills in the missing gap between 2023 and 2025. I would need to make sure both data sets have the exact same columns, then I can use the function bind_rows() to combine them.</p>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -176,6 +159,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
