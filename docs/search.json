@@ -25,13 +25,23 @@
     "href": "index.html#experience",
     "title": "Quinn-Lynas-Portfolio",
     "section": "Experience",
-    "text": "Experience\nNone"
+    "text": "Experience\nI am experienced using data analysis tools like R, SAS, and Excel. I also have experience using java. I have data visualization experience, particularly in R using ggplot2. Throughout my coursework at CSUMB, I have completed several projects that show what skills I bring to the table."
   },
   {
     "objectID": "Portfolio_Project.html",
     "href": "Portfolio_Project.html",
     "title": "Portfolio Project",
     "section": "",
-    "text": "Data Description: I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/iveeaten3223times/massive-yahoo-finance-dataset. My data has information on stock prices from November 29th, 2018, to November 29th, 2023. This includes opening and closing prices, as well as highs and lows for the day. Additionally, there is information on volume, dividends, and splits. I want answer the question: Can we predict a company’s stock price 30 days into the future using historical data? If this is unreasonable, I would like to explore how different business categories (tech, finance, medicine, etc.) were affected by COVID-19.\nData Visualization: I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my final visualization, I would like to show the trajectory of my prediction, as well as the real world outcome. The data is from 2 years ago, so I can see how well the model works. As far as missing information, this data does not include any information on real world events. For example, I won’t have any idea if X company decides to unveal a product or announces a breakthrough in research, I will have to find that out from an outside source.\nData Cleaning: The data set I am looking at has 602000 rows of data. I am not interested in every single stock, so I will be filtering out some companies. I am going to add a new variable for business category and maybe a volatility variable as well. I will need to create a new variable that calculates daily change in order to calculate volatility. If I find a data set that works, I would like to add new data that fills in the missing gap between 2023 and 2025. I would need to make sure both data sets have the exact same columns, then I can use the function bind_rows() to combine them."
+    "text": "Data Description: I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/iveeaten3223times/massive-yahoo-finance-dataset. My data has information on stock prices from November 29th, 2018, to November 29th, 2023. This includes opening and closing prices, as well as highs and lows for the day. Additionally, there is information on volume, dividends, and splits. I want answer the question: Can we predict a company’s stock price 30 days into the future using historical data? If this is unreasonable, I would like to explore how different business categories (tech, finance, medicine, etc.) were affected by COVID-19.\nData Visualization: I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my final visualization, I would like to show the trajectory of my prediction, as well as the real world outcome. The data is from 2 years ago, so I can see how well the model works. As far as missing information, this data does not include any information on real world events. For example, I won’t have any idea if X company decides to unveal a product or announces a breakthrough in research, I will have to find that out from an outside source.\nData Cleaning: The data set I am looking at has 602000 rows of data. I am not interested in every single stock, so I will be filtering out some companies. I am going to add a new variable for business category and maybe a volatility variable as well. I will need to create a new variable that calculates daily change in order to calculate volatility. If I find a data set that works, I would like to add new data that fills in the missing gap between 2023 and 2025. I would need to make sure both data sets have the exact same columns, then I can use the function bind_rows() to combine them.",
+    "crumbs": [
+      "Portfolio Project"
+    ]
+  },
+  {
+    "objectID": "proof_portfolio.html",
+    "href": "proof_portfolio.html",
+    "title": "Proof Portfolio",
+    "section": "",
+    "text": "Download PDF file."
   }
 ]

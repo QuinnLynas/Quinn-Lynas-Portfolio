@@ -1,0 +1,5 @@
+---
+title: "Factors Leading to Larger Waves in California; Visualization Project"
+---
+
+![](images/Final-Project-Dashboard-1.html){fig-align="left" width="15in" height="10in"}

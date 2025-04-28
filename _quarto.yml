@@ -5,14 +5,27 @@ project:
 website:
   title: "Quinn-Lynas's-Portfolio"
   navbar:
+    background: primary
+    search: true
     left:
-      - href: index.qmd
-        text: "Home"
-      - href: about.qmd
-        text: "About Me"
-      - href: Portfolio_Project.qmd
-        text: "Portfolio Project"
-
+     - text: "Home"
+       href: index.qmd
+     - text: "About"
+       href: about.qmd
+     - sidebar:class_projects
+     - sidebar:research_projects
+        
+  sidebar:
+    - id: class_projects
+      title: "Class Projects"
+      style: "docked"
+      background: light
+      contents: 
+        - data_viz_final.qmd
+        - Portfolio_Project.qmd
+        - proof_portfolio.qmd
+    - id: research_projects
+      title: "Research Projects"
 format:
   html:
     theme: cosmo
