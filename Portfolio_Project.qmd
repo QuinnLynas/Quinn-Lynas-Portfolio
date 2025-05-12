@@ -1,9 +1,209 @@
 ---
 title: "Portfolio Project"
+warning: false
+echo: false
+embed-resources: true
 ---
 
-**Data Description:** I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/iveeaten3223times/massive-yahoo-finance-dataset. My data has information on stock prices from November 29th, 2018, to November 29th, 2023. This includes opening and closing prices, as well as highs and lows for the day. Additionally, there is information on volume, dividends, and splits. I want answer the question: Can we predict a company's stock price 30 days into the future using historical data? If this is unreasonable, I would like to explore how different business categories (tech, finance, medicine, etc.) were affected by COVID-19.
+**Data Description:** I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data. My data has information on sales of a large retailer from 2015 through 2019. This includes customer information and location, information on what the customer purchased, and how much was spent on the purchase. I want answer the following questions: 
 
-**Data Visualization:** I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my final visualization, I would like to show the trajectory of my prediction, as well as the real world outcome. The data is from 2 years ago, so I can see how well the model works. As far as missing information, this data does not include any information on real world events. For example, I won't have any idea if X company decides to unveal a product or announces a breakthrough in research, I will have to find that out from an outside source.
+1. What type of products were the most purchased between 2015 and 2019? 
 
-**Data Cleaning:** The data set I am looking at has 602000 rows of data. I am not interested in every single stock, so I will be filtering out some companies. I am going to add a new variable for business category and maybe a volatility variable as well. I will need to create a new variable that calculates daily change in order to calculate volatility. If I find a data set that works, I would like to add new data that fills in the missing gap between 2023 and 2025. I would need to make sure both data sets have the exact same columns, then I can use the function bind_rows() to combine them.
+2. What state had the most products purchased?
+
+3. How does the market in California look and has it changed? 
+
+4. How are sales distributed between different sub-categories?
+
+**Data Visualization:** I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my second research question a bar chart will work. For my third research question I will have to visualize using a graph that shows proportion well. I wanted to do a sankey/alluvial plot for this one. Missing data shouldn't be an issue.
+
+**Data Cleaning:** The data set I am looking at has 9800 rows of information. I will need to fix the zip codes, some of them are missing and some only have 4 digits. I will need to manually fix this. After the zips are fixed, I will match the zip codes with data from the "zipdata" library, which has longitude and latitude information for each zip. I will also be looking at state and overall U.S. longitude and latitude coordinates so that I can answer question 2.
+
+
+
+```{r}
+#| label: Data cleaning
+#| include: false
+library(tidyverse)
+library(ggplot2)
+library(ggsankey)
+library(ggalluvial)
+library(zipcode)
+library(lubridate)
+library(sf)
+library(mapdata)
+library(maps)
+data(zipcode) #get zip code data 
+usa <- map_data("usa") #data for US map
+state = map_data("state") #data for US states
+sales <- read_csv("train.csv", col_types = c(`Postal Code` = "c")) #read in sales data
+naniar::gg_miss_var(sales) #check for missing values in the data
+sales <- janitor::clean_names(sales) #clean column names in the data
+
+sales |>
+  filter(is.na(postal_code)) #check where the zip code is na
+
+burlington_zip = "05405" #set zip code for burlington which is the only city with NA zips
+
+sales <- sales |>
+  mutate(postal_code = case_when(
+    is.na(postal_code) ~ burlington_zip,
+    .default = postal_code
+  )) #input postal code for missing values
+
+
+
+sales |>
+  filter(str_width(postal_code) == 4) #check to make sure zip codes are all 5 digits
+
+sales <-  sales |>
+  mutate(postal_code = case_when(
+    str_width(postal_code) == 4 ~ paste0("0", postal_code),
+    .default = postal_code
+  )) #input 0 in front of zip codes that are length 4
+
+sales <- sales |>
+  mutate(order_date = dmy(order_date), ship_date = dmy(ship_date)) |>
+  rename(zip = postal_code) #use lubridate to format dates, rename postal code so that we can join two datasets
+
+zipcode <- zipcode |>
+  select(zip, latitude, longitude) #get rid of unnecessary columns in zipcode data
+
+sales <- left_join(sales, zipcode, by = join_by(zip)) #join sales and zipcode data by zip
+
+
+```
+
+*Research Question 1:* What type of products were the most sold between 2015 and 2019?
+
+```{r}
+#| label: Question 1 Visualization
+#| layout-ncol: 2
+sales |>
+  group_by(sub_category) |>
+  summarise(n_sales = sum(sales)) |>
+  ggplot(aes(x = n_sales, y = fct_reorder(sub_category, n_sales), fill = fct_reorder(sub_category, n_sales))) + 
+  geom_col() + 
+  labs(x = "Total Sales", y = "Sub-category", title = "Most sold products for a global superstore") +
+  scale_x_continuous() + 
+  theme_minimal() +
+  scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
+  guides(fill = "none") 
+
+sales |>
+  group_by(category) |>
+  summarise(n_sales = sum(sales)) |>
+  ggplot(aes(y = n_sales, x = fct_reorder(category, n_sales), fill = fct_reorder(category, n_sales))) + 
+  geom_col() +
+  labs(y = "Total Sales", x = "Category", title = "Most sold products for a global superstore") +
+  theme_minimal() +
+  scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
+  guides(fill = "none") + 
+  scale_y_continuous(trans = "sqrt")
+```
+
+*Research Question 2:* What state has the most products purchased?
+
+```{r}
+#| label: Question 2 Visualizations
+#| layout-ncol: 2
+top10_states <- sales |>
+  group_by(state) |>
+  summarise(state_sales = sum(sales)) |>
+  arrange(desc(state_sales)) |>
+  slice_head(n = 10)
+
+
+top10_states |>
+  ggplot(aes(x = state_sales, y = fct_reorder(state, state_sales), fill = fct_reorder(state, state_sales))) + 
+  geom_col() + 
+  labs(y = "", x = "Total Sales", title = "Top 10 Ranked States for Total Sales") + 
+  theme_minimal() + 
+  guides(fill = "none") + 
+  scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9)
+
+
+ggplot() +
+  geom_polygon(data = state, aes(x = long, y = lat, group = group), fill = "grey90",  color = "black") + 
+  geom_jitter(data = sales |>
+                filter(state %in% top10_states$state), 
+                aes(x = longitude, y = latitude, color = sales, size = sales)) + 
+  scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.9, trans = "sqrt") + 
+  theme_void() +
+  guides(color = "none", size = "none") +
+  labs( x = "", y = "", title = "       Top 10 States Sales") +
+  theme(axis.text = element_blank(), legend.position = "bottom", aspect.ratio = 0.5) 
+
+sales |>
+  group_by(sub_category) |>
+  filter(state == "California") |>
+  summarise(n_sales = sum(sales)) |>
+  ggplot(aes(y = fct_reorder(sub_category, n_sales), x = n_sales, fill = fct_reorder(sub_category, n_sales))) + 
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Total Sales", y = "") + 
+  scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
+  guides(fill = "none")
+
+ggplot() + 
+  geom_polygon(data = state |> 
+                 filter(region == "california"), 
+                 aes(x = long, y = lat, group = group), fill = "grey90", color = "black") + 
+  geom_jitter(data = sales |>
+               filter(state == "California"),
+               aes(x = longitude, y = latitude, color = sales), alpha = 0.4, width = 0.1, height = 0.1) +
+  scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.8, trans = "log") +
+  theme_void() + 
+  theme(legend.position = "right", aspect.ratio = 1) + 
+  labs(color = "Sales")
+```
+
+
+```{r}
+# sales |>
+#   filter(sub_category == "Phones") |>
+#   mutate(year_month = str_sub(order_date, start = 1, end = 7),
+#          year_month = ym(year_month)) |>
+#   group_by(year_month) |>
+#   summarise(total_sales = sum(sales)) |>
+#   ggplot(aes(x = year_month, y = total_sales)) + 
+#   geom_line(color = "blue") + 
+#   theme_minimal() + 
+#   labs(x = "", y = "Total Sales", title = "Total phone sales for each month from 2015-2019")
+```
+
+*Research Question 3:* How does the market in California look and has it changed?
+
+```{r}
+#| label: Question 3 Visualization
+df <- sales |>
+  filter(state == "California") |>
+  mutate(year = str_sub(order_date, start = 1, end = 4),
+         year = as.numeric(year)) |>
+  group_by(category, year) |>
+  summarise(total_sales = sum(sales), .groups = "keep") |>
+  ungroup()
+
+ggplot(df, aes(x = year, color = category, y = total_sales)) + 
+  geom_point() + 
+  geom_line() + 
+  scale_color_viridis_d(option = "magma", begin = 0.2, end = 0.9) +
+  theme_classic() + 
+  labs(color = "", y = "Total Sales", x = "Year", title = "Sales per Year for Different Product Categories in California")
+
+```
+
+*Research Question 4:* How are sales distributed between different sub-categories?
+
+```{r}
+#| label: Question 4 Visualization
+sales |>
+  filter(state == "California") |>
+  ggplot(aes(x = category, y = sales, color = fct_reorder(sub_category, sales))) + 
+  ggbeeswarm::geom_beeswarm() + 
+  scale_color_viridis_d(option = "magma") + 
+  scale_y_continuous(trans = "log10") + 
+  theme_classic() + 
+  labs(y = "Sales", x = "Category", color = "Sub-category")
+```
+
