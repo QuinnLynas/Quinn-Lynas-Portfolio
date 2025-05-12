@@ -29,7 +29,7 @@ website:
       style: "docked"
       background: light
       contents:
-        - summer_uroc.qmd
+        - summer_uroc.html
 format:
   html:
     theme: cosmo
