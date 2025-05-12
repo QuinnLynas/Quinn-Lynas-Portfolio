@@ -26,6 +26,10 @@ website:
         - proof_portfolio.qmd
     - id: research_projects
       title: "Research Projects"
+      style: "docked"
+      background: light
+      contents:
+        - summer_uroc.qmd
 format:
   html:
     theme: cosmo
