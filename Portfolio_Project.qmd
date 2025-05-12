@@ -5,21 +5,19 @@ echo: false
 embed-resources: true
 ---
 
-**Data Description:** I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data. My data has information on sales of a large retailer from 2015 through 2019. This includes customer information and location, information on what the customer purchased, and how much was spent on the purchase. I want answer the following questions: 
+**Data Description:** I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data. My data has information on sales of a large retailer from 2015 through 2019. This includes customer information and location, information on what the customer purchased, and how much was spent on the purchase. I want answer the following questions:
 
-1. What type of products were the most purchased between 2015 and 2019? 
+1.  What type of products were the most purchased between 2015 and 2019?
 
-2. What state had the most products purchased?
+2.  What state had the most products purchased?
 
-3. How does the market in California look and has it changed? 
+3.  How does the market in California look and has it changed?
 
-4. How are sales distributed between different sub-categories?
+4.  How are sales distributed between different sub-categories?
 
 **Data Visualization:** I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my second research question a bar chart will work. For my third research question I will have to visualize using a graph that shows proportion well. I wanted to do a sankey/alluvial plot for this one. Missing data shouldn't be an issue.
 
 **Data Cleaning:** The data set I am looking at has 9800 rows of information. I will need to fix the zip codes, some of them are missing and some only have 4 digits. I will need to manually fix this. After the zips are fixed, I will match the zip codes with data from the "zipdata" library, which has longitude and latitude information for each zip. I will also be looking at state and overall U.S. longitude and latitude coordinates so that I can answer question 2.
-
-
 
 ```{r}
 #| label: Data cleaning
@@ -152,12 +150,11 @@ ggplot() +
   geom_jitter(data = sales |>
                filter(state == "California"),
                aes(x = longitude, y = latitude, color = sales), alpha = 0.4, width = 0.1, height = 0.1) +
-  scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.8, trans = "log") +
+  scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.8, trans = "log10", breaks = c(1, 10, 100, 1000)) +
   theme_void() + 
   theme(legend.position = "right", aspect.ratio = 1) + 
   labs(color = "Sales")
 ```
-
 
 ```{r}
 # sales |>
@@ -206,4 +203,3 @@ sales |>
   theme_classic() + 
   labs(y = "Sales", x = "Category", color = "Sub-category")
 ```
-
