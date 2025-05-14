@@ -21,7 +21,8 @@ website:
        menu:
          - file: summer_uroc.qmd
          - file: capstone_poster.qmd
-         - file: statconsult/app.R
+     - text: "Shiny App"
+       href: https://quinnlynas.shinyapps.io/Shiny_web_app/
         
 format:
   html:
