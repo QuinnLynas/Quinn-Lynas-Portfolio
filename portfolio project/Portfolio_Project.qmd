@@ -197,7 +197,7 @@ ggplot(df, aes(x = year, color = category, y = total_sales)) +
 
 *Research Question 4:* How are sales distributed between different sub-categories in California?
 
-The 8th visualization aims to answer my fourth research question.
+The 8th visualization aims to answer my fourth research question. The visual examines the different sale patterns within categories. Interestingly, office supplies has a lot of sales, but they are mostly low numbers. Furniture and technology have similar patterns, with technology having slightly higher sales but slightly less dense distribution.
 
 ```{r}
 #| label: Question 4 Visualization
@@ -208,5 +208,5 @@ sales |>
   scale_color_viridis_d(option = "magma") + 
   scale_y_continuous(trans = "log10") + 
   theme_classic() + 
-  labs(y = "Sales", x = "Category", color = "Sub-category")
+  labs(y = "Sales", x = "Category", color = "Sub-category", caption = "Office supplies have low quantity sales, while furniture and tech have high quantity sales", alt = "Beeswarm graph with sales on the Y axis (log 10 transformed) and category on the x-axis. Three categories have points distributed for sales, each point represents sales of a sub-category. The color for subcategory is ordered by sales, subcategories with higher sales have brighter colors. While office supplies don't account for high sales, there are more low quantity sales than the other two categories.")
 ```
