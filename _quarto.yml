@@ -21,6 +21,7 @@ website:
        menu:
          - file: summer_uroc.qmd
          - file: capstone_poster.qmd
+         - file: statconsult/app.R
         
 format:
   html:
