@@ -209,3 +209,7 @@ sales |>
   theme_classic() + 
   labs(y = "Sales", x = "Category", color = "Sub-category", caption = "Office supplies have low quantity sales, while furniture and tech have high quantity sales", alt = "Beeswarm graph with sales on the Y axis (log 10 transformed) and category on the x-axis. Three categories have points distributed for sales, each point represents sales of a sub-category. The color for subcategory is ordered by sales, subcategories with higher sales have brighter colors. While office supplies don't account for high sales, there are more low quantity sales than the other two categories.")
 ```
+
+### Recommendation
+
+After careful examination of the data, I would recommend to any large superstore to sell either technology or furniture. These two product categories are more lucrative than office-supplies, and the demand has increases since the start year. I recommend opening stores in California, particularly near the bay area or southern California. Products like phones and chairs are best selling, so if you're looking to make profits I'd recommend on focusing on one or the other.
