@@ -19,6 +19,10 @@ embed-resources: true
 
 **Data Cleaning:** The data set I am looking at has 9800 rows of information. I will need to fix the zip codes, some of them are missing and some only have 4 digits. I will need to manually fix this. After the zips are fixed, I will match the zip codes with data from the "zipdata" library, which has longitude and latitude information for each zip. I will also be looking at state and overall U.S. longitude and latitude coordinates so that I can answer question 2.
 
+### Data Cleaning
+
+The data set required some fixing with the zip codes. Some of the easterly states who's zip starts with zero mistakenly read in as only 4 digit zips. I had to put a zero at the front of every zip. On top of that, one of the cities had missing data for zip code, so I manually coded in the city's zip. I used a package called "zipcode" which contains a data set with longitude and latitude coordinates for each zip code in the United States. I joined this data set with the original so that each observation had coordinates. I also used the "lubridate" package to format the shipping dates better.
+
 ```{r}
 #| label: Data cleaning
 #| include: false
@@ -72,7 +76,11 @@ sales <- left_join(sales, zipcode, by = join_by(zip)) #join sales and zipcode da
 
 ```
 
+### Visualizations 1 and 2
+
 *Research Question 1:* What type of products were the most sold between 2015 and 2019?
+
+The first two visualizations aim to answer my first research question, seen above. The visualization on the left shows the most sold sub-categories in order from least to most sold. You can see the two most sold products are phones and chairs. The next closest is storage, but the difference between them is quite large. The visualization on the right shows the most sold categories, in order from least to most sold. It is evident that technology sells the most.
 
 ```{r}
 #| label: Question 1 Visualization
@@ -80,9 +88,9 @@ sales <- left_join(sales, zipcode, by = join_by(zip)) #join sales and zipcode da
 sales |>
   group_by(sub_category) |>
   summarise(n_sales = sum(sales)) |>
-  ggplot(aes(x = n_sales, y = fct_reorder(sub_category, n_sales), fill = fct_reorder(sub_category, n_sales))) + 
+  ggplot(aes(x = n_sales / 1000, y = fct_reorder(sub_category, n_sales), fill = fct_reorder(sub_category, n_sales))) + 
   geom_col() + 
-  labs(x = "Total Sales", y = "Sub-category", title = "Most sold products for a global superstore") +
+  labs(x = "Total Sales (in thousands)", y = "Sub-category", title = "Most sold products for a global superstore", caption = "Phones are most sold sub-category", alt = "Horizontal bar chart depicting total sales for different sub-categories in a superstore. Each horizontal bar represents a sub-category, which are sorted from least to most sales. Phones have the highest sales among all sub-categories. The x-axis uses a per 1000 scale.") +
   scale_x_continuous() + 
   theme_minimal() +
   scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
@@ -91,14 +99,15 @@ sales |>
 sales |>
   group_by(category) |>
   summarise(n_sales = sum(sales)) |>
-  ggplot(aes(y = n_sales, x = fct_reorder(category, n_sales), fill = fct_reorder(category, n_sales))) + 
+  ggplot(aes(y = n_sales / 1000, x = fct_reorder(category, n_sales), fill = fct_reorder(category, n_sales))) + 
   geom_col() +
-  labs(y = "Total Sales", x = "Category", title = "Most sold products for a global superstore") +
+  labs(y = "Total Sales (in thousands)", x = "Category", title = "Most sold products for a global superstore", caption = "Technology is most sold category by a wide margin", alt = "Vertical bar chart showing total sales by product category in a global superstore. Bars are sorted by sales. Technology has the highest sales, then Furniture and Office Supplies. The y-axis uses a per 1000 scale.") +
   theme_minimal() +
   scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
-  guides(fill = "none") + 
-  scale_y_continuous(trans = "sqrt")
+  guides(fill = "none") 
 ```
+
+### Visualizations 3, 4, 5, and 6
 
 *Research Question 2:* What state has the most products purchased?
 
@@ -169,6 +178,8 @@ ggplot() +
 #   labs(x = "", y = "Total Sales", title = "Total phone sales for each month from 2015-2019")
 ```
 
+### Visualization 7
+
 *Research Question 3:* How does the market in California look and has it changed?
 
 ```{r}
@@ -190,7 +201,9 @@ ggplot(df, aes(x = year, color = category, y = total_sales)) +
 
 ```
 
-*Research Question 4:* How are sales distributed between different sub-categories?
+### Visualization 8
+
+*Research Question 4:* How are sales distributed between different sub-categories in California?
 
 ```{r}
 #| label: Question 4 Visualization
