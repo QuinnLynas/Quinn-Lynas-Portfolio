@@ -168,22 +168,11 @@ ggplot() +
   labs(color = "Sales", caption = "Bay area and southern California account for most of the sales in the state.", alt = "Map of the State of California, with a point for each sale. Many of the sales are distributed near San Francisco and Los Angeles. The color of each point is mapped to the number of sales, with a brighter color meaning more sales. The points are jittered so overlapping points are more visible.")
 ```
 
-```{r}
-# sales |>
-#   filter(sub_category == "Phones") |>
-#   mutate(year_month = str_sub(order_date, start = 1, end = 7),
-#          year_month = ym(year_month)) |>
-#   group_by(year_month) |>
-#   summarise(total_sales = sum(sales)) |>
-#   ggplot(aes(x = year_month, y = total_sales)) + 
-#   geom_line(color = "blue") + 
-#   theme_minimal() + 
-#   labs(x = "", y = "Total Sales", title = "Total phone sales for each month from 2015-2019")
-```
-
 ### Visualization 7
 
 *Research Question 3:* How does the market in California look and has it changed?
+
+The 7th visualization below aims to answer my third research question. The line graph shows how product categories sales have changed from 2015 to 2019. Furniture and technology move similar to one another, while office supplies act more sporadically. Sales have increased for each category since 2015.
 
 ```{r}
 #| label: Question 3 Visualization
@@ -200,13 +189,15 @@ ggplot(df, aes(x = year, color = category, y = total_sales)) +
   geom_line() + 
   scale_color_viridis_d(option = "magma", begin = 0.2, end = 0.9) +
   theme_classic() + 
-  labs(color = "", y = "Total Sales", x = "Year", title = "Sales per Year for Different Product Categories in California")
+  labs(color = "", y = "Total Sales", x = "Year", title = "Sales per Year for Different Product Categories in California", caption = "Office supplies see the strongest increase", alt = "Line graph with sales on the y-axis and year on the x-axis. Three separate lines represent different categories; furniture, office supplies, and technology. The office supplies see the largest increase in sales since the start date.")
 
 ```
 
 ### Visualization 8
 
 *Research Question 4:* How are sales distributed between different sub-categories in California?
+
+The 8th visualization aims to answer my fourth research question.
 
 ```{r}
 #| label: Question 4 Visualization
