@@ -39,7 +39,7 @@ library(maps)
 data(zipcode) #get zip code data 
 usa <- map_data("usa") #data for US map
 state = map_data("state") #data for US states
-sales <- read_csv("train.csv", col_types = c(`Postal Code` = "c")) #read in sales data
+sales <- read_csv("data/train.csv", col_types = c(`Postal Code` = "c")) #read in sales data
 naniar::gg_miss_var(sales) #check for missing values in the data
 sales <- janitor::clean_names(sales) #clean column names in the data
 

@@ -14,13 +14,13 @@ website:
        href: about.qmd
      - text: "Class Projects"
        menu:
-         - file: data_viz_final.qmd
-         - file: Portfolio_Project.qmd
-         - file: proof_portfolio.qmd
+         - file: class projects/data_viz_final.qmd
+         - file: portfolio project/Portfolio_Project.qmd
+         - file: class projects/proof_portfolio.qmd
      - text: "Research Projects"
        menu:
-         - file: summer_uroc.qmd
-         - file: capstone_poster.qmd
+         - file: research projects/summer_uroc.qmd
+         - file: research projects/capstone_poster.qmd
      - text: "Shiny App"
        href: https://quinnlynas.shinyapps.io/Shiny_web_app/
         
