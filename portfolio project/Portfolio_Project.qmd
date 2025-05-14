@@ -112,7 +112,7 @@ sales |>
 
 *Research Question 2:* What state has the most products purchased?
 
-The next four visualizations aim to answer the above research question. The first visualization answers the research question, as you can clearly see California has the most total sales. This visualization and the next only show the states which are top 10 for total sales. The second visualization shows a map of the U.S. and the sales between each of the states. You can see there is a very high density for sales in California, and also states in the Northeast and Midwest. Since I found California had the most sales, I wanted to examine the sales within California to see if they were different than the country's sales.
+The next four visualizations aim to answer the above research question. The first visualization answers the research question, as you can clearly see California has the most total sales. This visualization and the next only show the states which are top 10 for total sales. The second visualization shows a map of the U.S. and the sales between each of the states. You can see there is a very high density for sales in California, and also states in the Northeast and Midwest. Since I found California had the most sales, I wanted to examine the sales within California to see if they were different than the country's sales. The order is relatively similar, phones and chairs hold the top two spots respectively. After examining the sub-categories of products, I decided to look into the hot-spots for sales in the state. My visual revealed most of the sales coming from the bay area, Los Angeles, and San Diego. Few sales came from the central valley.
 
 ```{r}
 #| label: Question 2 Visualizations
@@ -125,9 +125,9 @@ top10_states <- sales |>
 
 
 top10_states |>
-  ggplot(aes(x = state_sales, y = fct_reorder(state, state_sales), fill = fct_reorder(state, state_sales))) + 
+  ggplot(aes(x = state_sales / 1000, y = fct_reorder(state, state_sales), fill = fct_reorder(state, state_sales))) + 
   geom_col() + 
-  labs(y = "", x = "Total Sales", title = "Top 10 Ranked States for Total Sales") + 
+  labs(y = "", x = "Total Sales (in thousands)", title = "Top 10 Ranked States for Total Sales", caption = "California has the highest total sales", alt = "Horizontal bar chart showing total sales for each state that ranks top 10 in sales. Bars are sorted by total sales. California has the most total sales, followed by New York and others. The x-axis is in thousands of sales.") + 
   theme_minimal() + 
   guides(fill = "none") + 
   scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9)
@@ -141,7 +141,7 @@ ggplot() +
   scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.9, trans = "sqrt") + 
   theme_void() +
   guides(color = "none", size = "none") +
-  labs( x = "", y = "", title = "       States which are top 10 in Sales in the U.S.") +
+  labs( x = "", y = "", title = "       States which are top 10 in Sales in the U.S.", caption = "Most sales in the country come from California,\nnortheast, midwest, Texas, and Florida", alt = "Map of the United States with points marked for each sale in the top 10 states. Location is marked for each point, and the size of each point is determined by how many sales there are. Color is transformed with a square root scale so that larger values don't impact the scale too much.") +
   theme(axis.text = element_blank(), legend.position = "bottom", aspect.ratio = 0.5) 
 
 sales |>
@@ -151,7 +151,7 @@ sales |>
   ggplot(aes(y = fct_reorder(sub_category, n_sales), x = n_sales, fill = fct_reorder(sub_category, n_sales))) + 
   geom_col() +
   theme_minimal() +
-  labs(x = "Total Sales", y = "") + 
+  labs(x = "Total Sales", y = "", caption = "Phones and chairs rank 1st and 2nd for product\nsub-categories in CA, similar to the whole country's pattern", alt = "Horizontal bar chart showing total sales for each sub-category in California. Bars are sorted by total sales. Phones and chairs are the most sold products, similarly to the whole country's pattern.") + 
   scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9) + 
   guides(fill = "none")
 
@@ -165,7 +165,7 @@ ggplot() +
   scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.8, trans = "log10", breaks = c(1, 10, 100, 1000)) +
   theme_void() + 
   theme(legend.position = "right", aspect.ratio = 1) + 
-  labs(color = "Sales")
+  labs(color = "Sales", caption = "Bay area and southern California account for most of the sales in the state.", alt = "Map of the State of California, with a point for each sale. Many of the sales are distributed near San Francisco and Los Angeles. The color of each point is mapped to the number of sales, with a brighter color meaning more sales. The points are jittered so overlapping points are more visible.")
 ```
 
 ```{r}
