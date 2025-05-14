@@ -1,5 +1,6 @@
 ---
 title: "Portfolio Project"
+author: "Quinn Lynas"
 warning: false
 echo: false
 embed-resources: true
@@ -21,7 +22,7 @@ embed-resources: true
 
 ### Data Cleaning
 
-The data set required some fixing with the zip codes. Some of the easterly states who's zip starts with zero mistakenly read in as only 4 digit zips. I had to put a zero at the front of every zip. On top of that, one of the cities had missing data for zip code, so I manually coded in the city's zip. I used a package called "zipcode" which contains a data set with longitude and latitude coordinates for each zip code in the United States. I joined this data set with the original so that each observation had coordinates. I also used the "lubridate" package to format the shipping dates better.
+The data set required some fixing with the zip codes. Some of the easterly states who's zip starts with zero mistakenly read in as only 4 digit zips. I had to put a zero at the front of every zip with that problem. On top of that, one of the cities had missing data for zip code, so I manually coded in the city's zip. I used a package called "zipcode" which contains a data set with longitude and latitude coordinates for each zip code in the United States. I joined this data set with the original so that each observation had coordinates. I also used the "lubridate" package to format the shipping dates better.
 
 ```{r}
 #| label: Data cleaning
@@ -111,6 +112,8 @@ sales |>
 
 *Research Question 2:* What state has the most products purchased?
 
+The next four visualizations aim to answer the above research question. The first visualization answers the research question, as you can clearly see California has the most total sales. This visualization and the next only show the states which are top 10 for total sales. The second visualization shows a map of the U.S. and the sales between each of the states. You can see there is a very high density for sales in California, and also states in the Northeast and Midwest. Since I found California had the most sales, I wanted to examine the sales within California to see if they were different than the country's sales.
+
 ```{r}
 #| label: Question 2 Visualizations
 #| layout-ncol: 2
@@ -134,11 +137,11 @@ ggplot() +
   geom_polygon(data = state, aes(x = long, y = lat, group = group), fill = "grey90",  color = "black") + 
   geom_jitter(data = sales |>
                 filter(state %in% top10_states$state), 
-                aes(x = longitude, y = latitude, color = sales, size = sales)) + 
+                aes(x = longitude, y = latitude, color = sales, size = sales), width = 0.5, height = 0.5) + 
   scale_color_viridis_c(option = "magma", begin = 0.2, end = 0.9, trans = "sqrt") + 
   theme_void() +
   guides(color = "none", size = "none") +
-  labs( x = "", y = "", title = "       Top 10 States Sales") +
+  labs( x = "", y = "", title = "       States which are top 10 in Sales in the U.S.") +
   theme(axis.text = element_blank(), legend.position = "bottom", aspect.ratio = 0.5) 
 
 sales |>
