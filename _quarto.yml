@@ -30,7 +30,7 @@ website:
       background: light
       contents:
         - summer_uroc.html
-        - capstone_poster.qmd
+        - capstone_poster.html
 format:
   html:
     theme: cosmo
