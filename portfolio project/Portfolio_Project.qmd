@@ -131,7 +131,6 @@ top10_states |>
   guides(fill = "none") + 
   scale_fill_viridis_d(option = "magma", direction = -1, begin = 0.2, end = 0.9)
 
-
 ggplot() +
   geom_polygon(data = state, aes(x = long, y = lat, group = group), fill = "grey90",  color = "black") + 
   geom_jitter(data = sales |>
