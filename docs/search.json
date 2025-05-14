@@ -9,21 +9,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Quinn-Lynas-Portfolio",
+    "title": "Quinn Lynas Portfolio",
     "section": "",
-    "text": "Quinn Lynas"
+    "text": "California State University at Monterey Bay B.S. in Statistics | 2021 - 2025"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
-    "title": "Quinn-Lynas-Portfolio",
-    "section": "Education",
-    "text": "Education\nCalifornia State University at Monterey Bay B.S. in Statistics | 2021 - 2025"
+    "title": "Quinn Lynas Portfolio",
+    "section": "",
+    "text": "California State University at Monterey Bay B.S. in Statistics | 2021 - 2025"
   },
   {
     "objectID": "index.html#experience",
     "href": "index.html#experience",
-    "title": "Quinn-Lynas-Portfolio",
+    "title": "Quinn Lynas Portfolio",
     "section": "Experience",
     "text": "Experience\nI am experienced using data analysis tools like R, SAS, and Excel. I also have experience using java. I have data visualization experience, particularly in R using ggplot2. Throughout my coursework at CSUMB, I have completed several projects that show what skills I bring to the table."
   },
@@ -40,5 +40,12 @@
     "title": "Proof Portfolio",
     "section": "",
     "text": "Download PDF file."
+  },
+  {
+    "objectID": "shinyquarto.html",
+    "href": "shinyquarto.html",
+    "title": "shinytest",
+    "section": "",
+    "text": "Shiny applications not supported in static R Markdown documents"
   }
 ]

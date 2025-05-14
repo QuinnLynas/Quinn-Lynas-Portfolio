@@ -1,5 +1,5 @@
 ---
-title: "Quinn-Lynas-Portfolio"
+title: "Quinn Lynas Portfolio"
 about: 
   template: jolla
   image: plot2-1.png
@@ -11,8 +11,6 @@ about:
       text: Github
       href: https://github.com/QuinnLynas
 ---
-
-Quinn Lynas
 
 ## Education
 
