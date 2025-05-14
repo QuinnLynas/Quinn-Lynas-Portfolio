@@ -1,8 +1,9 @@
 ---
 title: "Portfolio Project"
 author: "Quinn Lynas"
-warning: false
-echo: false
+execute:
+  warning: false
+  echo: false
 embed-resources: true
 ---
 
@@ -15,10 +16,6 @@ embed-resources: true
 3.  How does the market in California look and has it changed?
 
 4.  How are sales distributed between different sub-categories?
-
-**Data Visualization:** I want some sort of time series visualizations so that we can see changes over time. I am guessing a line graph or scatter plot will work well for this, with the date on the x-axis. For my second research question a bar chart will work. For my third research question I will have to visualize using a graph that shows proportion well. I wanted to do a sankey/alluvial plot for this one. Missing data shouldn't be an issue.
-
-**Data Cleaning:** The data set I am looking at has 9800 rows of information. I will need to fix the zip codes, some of them are missing and some only have 4 digits. I will need to manually fix this. After the zips are fixed, I will match the zip codes with data from the "zipdata" library, which has longitude and latitude information for each zip. I will also be looking at state and overall U.S. longitude and latitude coordinates so that I can answer question 2.
 
 ### Data Cleaning
 
