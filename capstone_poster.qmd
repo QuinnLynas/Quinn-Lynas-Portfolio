@@ -1,0 +1,5 @@
+---
+title: "Capstone Project"
+---
+
+![](images/NBA Coach Eval.pdf){width="10.94in" height="8in"}
