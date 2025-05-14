@@ -12,25 +12,32 @@ website:
        href: index.qmd
      - text: "About"
        href: about.qmd
-     - sidebar:class_projects
-     - sidebar:research_projects
+     - text: "Class Projects"
+       menu:
+         - file: data_viz_final.qmd
+         - file: Portfolio_Project.qmd
+         - file: proof_portfolio.qmd
+     - text: "Research Projects"
+       menu:
+         - file: summer_uroc.html
+         - file: capstone_poster.html
         
-  sidebar:
-    - id: class_projects
-      title: "Class Projects"
-      style: "docked"
-      background: light
-      contents: 
-        - data_viz_final.qmd
-        - Portfolio_Project.qmd
-        - proof_portfolio.qmd
-    - id: research_projects
-      title: "Research Projects"
-      style: "docked"
-      background: light
-      contents:
-        - summer_uroc.html
-        - capstone_poster.html
+  # sidebar:
+  #   - id: class_projects
+  #     title: "Class Projects"
+  #     style: "docked"
+  #     background: light
+  #     contents: 
+  #       - data_viz_final.qmd
+  #       - Portfolio_Project.qmd
+  #       - proof_portfolio.qmd
+  #   - id: research_projects
+  #     title: "Research Projects"
+  #     style: "docked"
+  #     background: light
+  #     contents:
+  #       - summer_uroc.html
+  #       - capstone_poster.html
         
 format:
   html:
