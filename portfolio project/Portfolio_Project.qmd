@@ -7,7 +7,9 @@ execute:
 embed-resources: true
 ---
 
-**Data Description:** I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data. My data has information on sales of a large retailer from 2015 through 2019. This includes customer information and location, information on what the customer purchased, and how much was spent on the purchase. I want answer the following questions:
+### Data Description 
+
+I sourced my data from kaggle. The website is here: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data. My data has information on sales of a large retailer from 2015 through 2019. This includes customer information and location, information on what the customer purchased, and how much was spent on the purchase. I want answer the following questions:
 
 1.  What type of products were the most purchased between 2015 and 2019?
 
@@ -71,7 +73,7 @@ zipcode <- zipcode |>
 
 sales <- left_join(sales, zipcode, by = join_by(zip)) #join sales and zipcode data by zip
 
-
+#write.csv(sales, "data/train_cleaned.csv")
 ```
 
 ### Visualizations 1 and 2
