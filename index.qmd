@@ -16,6 +16,10 @@ about:
 
 B.S. Statistics, California State University Monterey Bay \| 2021 - 2025
 
+Deans List: Spring 2023 & 2025, Fall 2024
+
+UROC Researcher
+
 ## Experience
 
 I have hands-on experience with **data analysis tools** like R, SAS, and Excel, as well as programming experience in Java. Most of my data visualization work has been in R, where I use **ggplot2** to turn complex datasets into clear, engaging visuals.
