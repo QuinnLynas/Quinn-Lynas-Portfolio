@@ -6,7 +6,7 @@ about:
   links: 
     - icon: linkedin
       text: LinkedIn
-      href: www.linkedin.com/in/quinn-lynas-8ba15b254
+      href: www.linkedin.com/in/quinn-lynas
     - icon: github
       text: Github
       href: https://github.com/QuinnLynas
