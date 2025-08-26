@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6685f57f7611d95a701d58b4cc6878c0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -171,7 +171,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>About this site</p>
-<p>My name is Quinn Lynas and I am a statistics major.</p>
+<p>Hi, I’m Quinn! I’m a recent Statistics grad from California State University, Monterey Bay, and I love turning messy data into insights that actually mean something. For me, it’s all about finding patterns, telling stories through visuals, and helping people make smarter decisions with data that’s clear and actionable.</p>
+<p>Through school and research, I’ve built a strong foundation in statistical modeling, data visualization, and analysis using R and SAS. I’ve tackled a variety of projects—from studying NBA coach effectiveness with mixed-effects models to simulating pickleball tournaments for performance insights. Along the way, I’ve written R functions, cleaned big datasets, and shared results through visuals and presentations. I also use GitHub for version control and collaboration, and I’m always looking to sharpen my skills in areas like Bayesian inference, survey design, and statistical computing.</p>
+<p>People I’ve worked with usually describe me as reliable, detail-oriented, and easy to team up with. I like digging deep into data, but I also keep an eye on the bigger picture. Whether it’s coordinating on a construction site or presenting research findings, I bring curiosity, accountability, and a collaborative mindset to the table.</p>
+<p>Here are a few of the skills I bring:<br>
+</p>
+<p><strong>Data Analysis ▪ Statistical Modeling ▪ Data Visualization ▪ Linear Regression ▪ Mixed-Effects Models</strong></p>
+<p>I’m always excited to take on new challenges, learn something new, and apply my skills in meaningful ways. If you’d like to connect or chat about opportunities, feel free to reach out!</p>
 
 
 
@@ -258,8 +264,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -370,7 +374,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

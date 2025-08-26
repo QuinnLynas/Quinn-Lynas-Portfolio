@@ -4,4 +4,14 @@ title: "About"
 
 About this site
 
-My name is Quinn Lynas and I am a statistics major.
+Hi, I’m Quinn! I’m a recent Statistics grad from California State University, Monterey Bay, and I love turning messy data into insights that actually mean something. For me, it’s all about finding patterns, telling stories through visuals, and helping people make smarter decisions with data that’s clear and actionable.
+
+Through school and research, I’ve built a strong foundation in statistical modeling, data visualization, and analysis using R and SAS. I’ve tackled a variety of projects—from studying NBA coach effectiveness with mixed-effects models to simulating pickleball tournaments for performance insights. Along the way, I’ve written R functions, cleaned big datasets, and shared results through visuals and presentations. I also use GitHub for version control and collaboration, and I’m always looking to sharpen my skills in areas like Bayesian inference, survey design, and statistical computing.
+
+People I’ve worked with usually describe me as reliable, detail-oriented, and easy to team up with. I like digging deep into data, but I also keep an eye on the bigger picture. Whether it’s coordinating on a construction site or presenting research findings, I bring curiosity, accountability, and a collaborative mindset to the table.
+
+Here are a few of the skills I bring:\
+
+**Data Analysis ▪ Statistical Modeling ▪ Data Visualization ▪ Linear Regression ▪ Mixed-Effects Models**
+
+I’m always excited to take on new challenges, learn something new, and apply my skills in meaningful ways. If you’d like to connect or chat about opportunities, feel free to reach out!
